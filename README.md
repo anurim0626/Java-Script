@@ -41,10 +41,13 @@ HTML로는 웹의 내용을 작성하고, CSS로는 웹을 디자인하며, 자�
 
 ![image](https://user-images.githubusercontent.com/102803326/173517763-401f0a5f-2bd1-442b-9060-ed69629208ec.png)
 
+## -실행과정-
 
+![image](https://user-images.githubusercontent.com/102803326/173519883-aeafcaa0-0056-4056-92e2-fe0c615b15b7.png)
 
+✊🖐✌가위, 바위, 보 중 작성
 
-
+![image](https://user-images.githubusercontent.com/102803326/173520223-62bf163b-2e4a-4d4d-8fe4-dd0d7d3ffe50.png)
 
 
 
