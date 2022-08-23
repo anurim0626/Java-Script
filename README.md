@@ -1,4 +1,4 @@
-# Java-Script 첫걸음
+# Java-Script(shopping mall page)
 
 
 ## -자바 스크립트란?-
@@ -49,10 +49,197 @@ HTML로는 웹의 내용을 작성하고, CSS로는 웹을 디자인하며, 자�
 
 ![image](https://user-images.githubusercontent.com/102803326/173520223-62bf163b-2e4a-4d4d-8fe4-dd0d7d3ffe50.png)
 
-```java
-System.out.println("djkdd")
-```
+# 쇼핑몰 페이지
 
+### 실행 코드
+
+```css
+* { margin:0; padding: 0; }
+ul, li { list-style: none; }
+a { color: #ffffff; text-decoration: none; }
+
+#header {
+	width: 100%;
+	height: 80px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	line-height: 80px;
+}
+#nav {
+	width: 100%;
+	height: 40px;
+	background-color: #6094ff;
+	color: white;
+	line-height: 40px;
+}
+#nav ul li a {
+	float: left;
+	padding: 0 10px;
+}
+.section {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+.section p {
+	/* width: 800px; */
+	padding: 10px;
+	/* margin: 0 auto; */
+}
+.scroll {
+	height: 400px;
+	overflow-y: auto;
+}
+.title {
+	padding: 30px 0 20px 0;
+	text-align: center;
+}
+.table_line {
+	margin: 0 auto;
+	overflow-y: auto;
+	border: 1px solid black;
+}
+.table_line th, .table_line td {
+	padding: 5px;
+	border: 1px solid black;
+}
+.table_line .center td {
+	text-align: center;
+}
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	background-color: blue;
+	color: white;
+	text-align: center;
+	line-height: 30px;
+	font-size: 11px;
+}
+```
+```jsp
+<%@ page import="DB.DBConnect"%>
+<%@ page import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String sql="select max(custno) from member_tbl_02";
+
+	Connection conn = DBConnect.getConnection();
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	ResultSet rs = pstmt.executeQuery();
+	
+	rs.next();
+	int num = rs.getInt(1)+1;
+%>  
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/style.css?abc">
+<title>join</title>
+
+<script type="text/javascript">
+	function checkValue() {
+		if(!document.data.custname.value) {
+			alert("회원성명을 입력하세요.");
+			data.custname.focus();
+			return false;
+		} 
+		else if(!document.data.phone.value) {
+			alert("전화번호를 입력하세요.");
+			data.phone.focus();
+			return false;
+		} 
+		else if (!document.data.address.value) {
+			alert("주소를 입력하세요.");
+			data.address.focus();
+			return false;
+		} 
+		else if (!document.data.joindate.value) {
+			alert("가입일자를 입력하세요.");
+			data.joindate.focus();
+			return false;
+		} 
+		else if (!document.data.grade.value) {
+			alert("고객등급을 입력하세요.");
+			data.grade.focus();
+			return false;
+		}  
+		else if (!document.data.city.value) {
+			alert("도시코드를 입력하세요.");
+			data.city.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+
+</head>
+<body>
+<header>
+	  <jsp:include page="layout/header.jsp"></jsp:include>
+ </header>
+
+ <nav>
+   	 <jsp:include page="layout/nav.jsp"></jsp:include>
+ </nav>
+		
+ <section class="section">
+   	 <h2>홈쇼핑 회원 등록</h2><br>
+
+<form name="data" action="join_p.jsp" method="post" onsubmit="return checkValue()">
+			<table class="table_line">
+				<tr>
+					<th>회원번호(자동발생)</th>
+					<td><input type="text" name="custno" value="<%= num %>"  readonly ></td>
+				</tr>
+				<tr>
+					<th>회원성명</th>
+					<td><input type="text" name="custname" ></td>
+				</tr>
+				<tr>
+					<th>회원전화</th>
+					<td><input type="text" name="phone" ></td>
+				</tr>
+				<tr>
+					<th>회원주소</th>
+					<td><input type="text" name="address" ></td>
+				</tr>
+				<tr>
+					<th>가입일자</th>
+					<td><input type="text" name="joindate" ></td>
+				</tr>
+				<tr>
+					<th>고객등급[A:VIP,B:일반,C:직원]</th>
+					<td><input type="text" name="grade" ></td>
+				</tr>
+				<tr>
+					<th>도시코드</th>
+					<td><input type="text" name="city" ></td>
+				</tr>
+				<tr class="center">
+					<td  colspan="2" >
+						<input type="submit" value="등록">
+						<input type="button" value="취소" onclick="location.href='join.jsp'">
+						<input type="button" value="조회" onclick="location.href='member_list.jsp'">
+				</tr>
+			</table>
+		</form>	
+   	
+ </section>
+		
+<footer>
+	<jsp:include page="layout/footer.jsp"></jsp:include>
+</footer>
+
+</body>
+</html>
+```
 
 
 
