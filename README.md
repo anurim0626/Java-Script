@@ -1,5 +1,4 @@
-# Java-Script(shopping mall page)
-
+# Java-Script
 
 ## -자바 스크립트란?-
 
